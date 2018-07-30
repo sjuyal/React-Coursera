@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 import Menu from './MenuComponent';
 import Home from './HomeComponent';
+import About from './AboutComponent';
 import Contact from './ContactComponent';
 import { DISHES } from '../shared/dishes';
 import { COMMENTS } from '../shared/comments';
@@ -44,14 +45,22 @@ class Main extends Component {
         );
     }
 
+    const AboutPage = () => {
+        return(
+            <About leaders={this.state.leaders}
+            />
+        );
+    }
+
     return (
       <div className="App">
         <Header/>
         <Switch>
             <Route path='/home' component={HomePage} />
-            <Route exact path='/menu' component={HomePage} component={() => <Menu dishes={this.state.dishes} />} />
+            <Route exact path='/menu'  component={() => <Menu dishes={this.state.dishes} />} />
             <Route path="/menu/:dishId" component={DishWithId}/>
             <Route exact path='/contactus' component={Contact} />} />
+            <Route exact path='/aboutus' component={AboutPage} />} />
             <Redirect to="/home" />
         </Switch>
         <Footer/>
